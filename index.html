@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Em Bootcamp</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+  </head>
+  <body class="text-gray-700">
+    <!-- Navbar Mobile -->
+    <div
+      class="backdrop-blur-sm bg-white/10 text-white fixed right-0 left-0 md:hidden block z-30"
+    >
+      <div
+        class="container mx-auto flex justify-between items-center py-4 px-5"
+      >
+        <div class="flex items-center">
+          <h1
+            class="text-lg text-violet-700 mr-5 pe-6 flex border-e border-gray-400"
+          >
+            <p class="text-sm font-bold text-violet-900">Em</p>
+            Bootcamp
+          </h1>
+          <div
+            id="BtnMob"
+            class="duration-1000 bg-violet-200 border border-violet-400 w-10 h-10 flex items-center justify-center rounded-lg"
+          >
+            <button
+              id="helpBtn"
+              class="text-sky-500 border-2 border-sky-500 w-full h-full rounded-full flex items-center justify-center"
+            >
+              <span id="questionMarkMob" class="font-bold">?</span>
+            </button>
+          </div>
+        </div>
+
+        <button
+          id="navToggleButton"
+          class="md:hidden focus:outline-none text-gray-700"
+          onclick="toggleNav()"
+        >
+          <!-- SVG default untuk tombol menu -->
+          <svg
+            id="menuIcon"
+            class="h-9 w-9 fill-current"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3 18.75a1.25 1.25 0 0 0 0 2.5h18a1.25 1.25 0 0 0 0-2.5H3zm0-7.5a1.25 1.25 0 0 0 0 2.5h18a1.25 1.25 0 0 0 0-2.5H3zM3 6.25a1.25 1.25 0 0 0 0 2.5h18a1.25 1.25 0 0 0 0-2.5H3z"
+            />
+          </svg>
+
+          <!-- SVG "X" untuk tombol tutup -->
+          <svg
+            id="closeIcon"
+            class="h-6 w-6 fill-current hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M19.354 19.354a.5.5 0 0 1-.708 0L12 12.707l-6.646 6.647a.5.5 0 0 1-.708-.708L11.293 12 4.646 5.354a.5.5 0 0 1 .708-.708L12 11.293l6.647-6.647a.5.5 0 0 1 .708.708L12.707 12l6.647 6.647a.5.5 0 0 1 0 .708z"
+            />
+          </svg>
+        </button>
+
+        <div class="hidden md:flex space-x-4">
+          <a href="#" class="hover:text-blue-500">Home</a>
+          <a href="#" class="hover:text-blue-500">About</a>
+          <a href="#" class="hover:text-blue-500">Services</a>
+          <a href="#" class="hover:text-blue-500">Contact</a>
+        </div>
+      </div>
+      <div class="hidden w-full bg-white" id="mobile-nav">
+        <a
+          href="#"
+          class="block py-2 px-4 bg-white text-gray-700 hover:bg-gray-700"
+          >Short Course</a
+        >
+        <a
+          href="#"
+          class="block py-2 px-4 bg-white text-gray-700 hover:bg-gray-700"
+          >Job Guarantee Bootcamp</a
+        >
+        <a
+          href="#"
+          class="block py-2 px-4 bg-white text-gray-700 hover:bg-gray-700"
+          >Project-based Internship</a
+        >
+        <a
+          href="#"
+          class="block py-2 px-4 bg-white text-gray-700 hover:bg-gray-700"
+          >For Campus</a
+        >
+        <a
+          href="#"
+          class="block py-2 px-4 bg-white text-gray-700 hover:bg-gray-700"
+          >Lowongan Kerja</a
+        >
+      </div>
+      <!-- Card Information -->
+      <div
+        id="infoCardMob"
+        class="hidden bg-white border border-gray-300 p-2 mt-2 ml-10 rounded shadow w-60 absolute z-20"
+      >
+        <div
+          class="h-20"
+          style="
+            background-image: url(/images/checklist.gif);
+            background-size: cover;
+            background-position: center;
+          "
+        ></div>
+
+        <small class="text-black">
+          <strong>Ini adalah informasi yang akan ditampilkan</strong>
+          <p>
+            Ini adalah informasi yang akan ditampilkan ketika Anda mengarahkan
+            mouse ke tanda tanya.
+          </p>
+        </small>
+      </div>
+    </div>
+    <!-- End Navbar Mobile -->
+
+    <nav
+      class="hidden md:flex backdrop-blur-sm bg-white/10 p-4 px-28 justify-between items-center fixed w-full z-20"
+    >
+      <!-- Bagian Kiri Navbar -->
+      <!-- Judul -->
+      <div class="flex items-center justify-end w-1/4 pe-4">
+        <h1
+          class="text-lg text-violet-700 mr-5 pe-6 flex border-e border-gray-400"
+        >
+          <p class="text-sm font-bold text-violet-900">Em</p>
+          Bootcamp
+        </h1>
+        <!-- Tombol Bantuan -->
+        <div
+          id="Btn"
+          class="duration-1000 bg-violet-200 border border-violet-400 w-10 h-10 flex items-center justify-center rounded-lg"
+        >
+          <button
+            id="helpBtn"
+            class="text-sky-500 border-2 border-sky-500 w-full h-full rounded-full flex items-center justify-center"
+          >
+            <span id="questionMark" class="font-bold">?</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bagian Kanan Navbar -->
+      <div class="flex items-center justify-start w-1/2 ps-8">
+        <!-- Navigasi ke Talent Assessment dengan gambar task list -->
+        <a
+          href="#"
+          class="flex items-center text-gray-700 hover:text-sky-700 mr-4"
+        >
+          <img
+            src="/images/checklist.png"
+            alt="Task List Icon"
+            class="w-6 h-6 mr-1"
+          />
+          Talent Assessment
+        </a>
+
+        <!-- Navigasi for Corporate dengan gambar gedung atau ikon -->
+        <div class="relative inline-block text-left">
+          <button
+            id="corporateBtn"
+            class="flex items-center text-gray-700 hover:text-sky-700 mr-1 focus:outline-none"
+          >
+            <img
+              src="/images/building.png"
+              alt="Building Icon"
+              class="w-6 h-6 mr-2"
+            />
+            Corporate
+            <img src="/images/arrowDown.png" alt="" class="w-3 h-3 ml-2" />
+          </button>
+          <div
+            id="corporateMenu"
+            class="hidden absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
+          >
+            <div
+              class="py-1"
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="options-menu"
+            >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                role="menuitem"
+                >Talent Hiring</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                role="menuitem"
+                >Corporate Talent Transformation</a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- Pembatas -->
+        <div class="h-6 border-l-2 border-gray-300 mx-6"></div>
+        <!-- Navigasi Login -->
+        <a href="#" class="text-gray-700 hover:text-gray-900 mr-5 ml-4"
+          >Login</a
+        >
+        <!-- Navigasi Register -->
+        <a
+          href="#"
+          class="text-white bg-sky-600 hover:bg-sky-700 px-4 py-1 rounded-md"
+          >Register</a
+        >
+      </div>
+      <!-- Card Information -->
+      <div
+        id="infoCard"
+        class="hidden bg-white text-xs border border-gray-300 p-2 mt-60 ml-32 rounded shadow w-64 absolute z-20"
+      >
+        <div
+          class="h-20"
+          style="
+            background-image: url(/images/checklist.gif);
+            background-size: cover;
+            background-position: center;
+          "
+        ></div>
+
+        <small>
+          <strong>Ini adalah informasi yang akan ditampilkan</strong>
+          <p>
+            Ini adalah informasi yang akan ditampilkan ketika Anda mengarahkan
+            mouse ke tanda tanya.
+          </p>
+        </small>
+      </div>
+    </nav>
+
+    <div
+      class="bg-sky-200/0 md:bg-gradient-to-t from-sky-200/30 pt-5 pb-5 md:pb-0"
+    >
+      <div class="pt-7 md:pt-16"></div>
+      <!-- Second Navbar -->
+      <nav class="mb-10 hidden md:flex items-center relative">
+        <div class="max-w-8xl mx-auto px-2 sm:px-6 lg:px-8">
+          <div class="relative flex items-center justify-between h-16">
+            <div
+              class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start"
+            >
+              <!-- Short Course -->
+              <div class="hidden sm:block sm:ml-6 z-10">
+                <div class="flex space-x-4">
+                  <a
+                    href="#"
+                    class="text-gray-900 hover:text-sky-700 px-3 py-2 rounded-md text-sm font-medium"
+                    >Short Course</a
+                  >
+                  <!-- Job Guarantee Bootcamp -->
+                  <div class="relative inline-block text-left">
+                    <div>
+                      <button
+                        id="bootcampBtn"
+                        type="button"
+                        class="text-gray-900 hover:text-sky-700 px-3 py-2 rounded-md text-sm font-medium focus:outline-none"
+                      >
+                        Job Guarantee Bootcamp
+                      </button>
+                    </div>
+                    <div
+                      id="bootcampMenu"
+                      class="hidden origin-top-left absolute left-0 mt-2 w-62 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
+                    >
+                      <div
+                        class="py-1"
+                        role="menu"
+                        aria-orientation="vertical"
+                        aria-labelledby="options-menu"
+                      >
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          role="menuitem"
+                          >Data Science</a
+                        >
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          role="menuitem"
+                          >Digital Marketing</a
+                        >
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          role="menuitem"
+                          >Fullstack Web Development</a
+                        >
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          role="menuitem"
+                          >Product Management</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Project-based Internship -->
+                  <div class="ml-4 relative inline-block text-left">
+                    <div class="flex items-center">
+                      <div class="px-2 bg-red-500 text-white rounded-md">
+                        New
+                      </div>
+                      <button
+                        id="internshipBtn"
+                        type="button"
+                        class="text-gray-900 hover:text-sky-700 px-3 pl-1 py-2 rounded-md text-sm font-medium focus:outline-none"
+                      >
+                        Project-based Internship
+                      </button>
+                    </div>
+                    <div
+                      id="internshipMenu"
+                      class="hidden origin-top-left absolute left-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
+                    >
+                      <div
+                        class="py-1"
+                        role="menu"
+                        aria-orientation="vertical"
+                        aria-labelledby="options-menu"
+                      >
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          role="menuitem"
+                          >About Program</a
+                        >
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          role="menuitem"
+                          >Explore Program</a
+                        >
+                        <a
+                          href="#"
+                          class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          role="menuitem"
+                          >Testimonial & Research
+                          <div
+                            class="px-2 py-1 ml-1 bg-red-500 text-white rounded-md"
+                          >
+                            New
+                          </div></a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- For Campus & Lowongan Kerja -->
+              <div class="hidden sm:block sm:ml-6">
+                <div class="flex space-x-4">
+                  <a
+                    href="#"
+                    class="text-gray-900 hover:text-sky-700 px-3 py-2 rounded-md text-sm font-medium"
+                    >For Campus</a
+                  >
+                  <a
+                    href="#"
+                    class="text-gray-900 hover:text-sky-700 px-3 py-2 rounded-md text-sm font-medium"
+                    >Lowongan Kerja</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Section 1 -->
+      <div class="md:flex pt-8 pb-5 md:pb-0">
+        <div class="w-1/6 hidden md:block"></div>
+        <div class="block md:flex">
+          <div class="flex justify-end w-full md:w-3/4">
+            <div class="mb-10 md:mb-0 em48">
+              <h1
+                class="text-2xl text-center md:text-start md:text-6xl font-bold text-gray-800 mb-1 md:mb-4"
+              >
+                Mulai Karier Digitalmu
+              </h1>
+              <div class="text-container mb-5">
+                <h1 class="text-8xl text-gray-100/0 font-bold">
+                  Mulai Karier Digitalmu
+                </h1>
+                <div class="flex justify-center md:justify-start">
+                  <div
+                    class="text-animation text-center md:text-start text-2xl md:text-4xl -z-10"
+                  >
+                    <span class="text1">dalam hitungan bulan</span>
+                    <span class="text2">atau dapatkan refund 100%</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="hidden md:block text-md md:text-2xl text-center md:text-start text-gray-600 leading-9"
+              >
+                Temukan potensi, tingkatkan kompetensi. <br />Bersama
+                <span class="text-sky-500 font-bold">EmBootcamp</span>,
+                <span class="bg-violet-500 text-black p-1 font-bold"
+                  >Raih karier impian!</span
+                >
+              </div>
+              <div class="mt-8 md:mt-28"></div>
+              <div class="hidden md:block">
+                <p class="text-lg">Yuk EmBootcamp bantu! 🚀</p>
+                <p class="text-2xl">
+                  Bagaimana <b>status kariermu</b> saat ini?
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-center md:justify-start w-full md:w-1/4">
+            <div>
+              <div class="bulat-peang bg-sky-400 ml-10 md:ml-0">
+                <img
+                  src="/images/carrierGirl.png"
+                  alt="Gambar"
+                  class="absolute w-56 -mt-14 rounded"
+                />
+              </div>
+              <div
+                class="block md:hidden text-md md:text-2xl text-center md:text-start text-gray-600 leading-9 pt-5"
+              >
+                Temukan potensi, tingkatkan kompetensi. <br />Bersama
+                <span class="text-sky-500 font-bold">EmBootcamp</span>,
+                <span class="bg-violet-500 text-black p-1 font-bold"
+                  >Raih karier impian!</span
+                >
+              </div>
+              <button
+                class="hidden md:flex bg-white items-center mt-14 hover:bg-gray-100 border shadow font-bold py-2 px-4 rounded-lg"
+              >
+                <img
+                  src="/images/right-arrow-svgrepo-com.svg"
+                  width="20"
+                  class="mr-1"
+                  alt=""
+                />
+                Lihat Program Lainnya
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-1/6 hidden md:block"></div>
+      </div>
+    </div>
+    <!-- End Section 1 -->
+
+    <!-- Section 2 -->
+    <div
+      class="em48 p-3 pb-5 md:pb-16 pt-5 rounded-t-xl md:rounded-t-none bg-sky-200/30"
+    >
+      <div class="block md:hidden">
+        <p class="text-lg">Yuk EmBootcamp bantu! 🚀</p>
+        <p class="text-2xl">Bagaimana <b>status kariermu</b> saat ini?</p>
+      </div>
+      <div class="flex justify-center items-center pt-5">
+        <div class="w-1/6 hidden md:block"></div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full mx-3">
+          <div
+            style="background-image: url(./images/workingGirl.avif)"
+            class="card rounded-lg relative bg-cover h-56 bg-white p-8 shadow-md transition-transform duration-500"
+          >
+            <div
+              class="w-full bg-gray-300 font-bold text-black h-8 pl-4 flex items-center absolute -top-1 left-0 rounded-t-lg z-10"
+            >
+              Bingung Memilih Karier
+            </div>
+            <button
+              style="padding: 0.5em 0"
+              class="w-11/12 bg-white text-sm rounded-lg absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30"
+            >
+              Pilih Status
+            </button>
+            <div
+              class="hidden-text text-white absolute bottom-11 left-0 w-full h-12 pt-2 px-5 z-20"
+            >
+              <p class="flex items-center">
+                <img
+                  src="./images/magnifying-glass.svg"
+                  width="20"
+                  class="mr-2"
+                  alt=""
+                />
+                Exploration
+                <span
+                  id="cardArrow1"
+                  class="bg-white h-4 p-1 rounded-full duration-500 ml-auto"
+                  ><img src="./images/arrowDown.png" alt="" width="10"
+                /></span>
+              </p>
+              <small class="duration-500 opacity-0"
+                >Ketahui potensi diri hingga karier yang sesuai denganmu!</small
+              >
+            </div>
+
+            <p
+              class="absolute rounded-b-lg bottom-0 left-0 w-full h-28 pt-2 bg-gradient-to-t from-black via-black/90 to-black/0 text-center flex justify-center z-10"
+            ></p>
+            <p
+              class="absolute card-darker rounded-b-lg bottom-0 left-0 w-full h-full opacity-0 pt-2 duration-500 bg-black/30 text-center flex justify-center"
+            ></p>
+          </div>
+          <div
+            style="background-image: url(./images/workingGirl.avif)"
+            class="card rounded-lg relative bg-cover h-56 bg-white p-8 shadow-md transition-transform duration-500"
+          >
+            <div
+              class="w-full bg-violet-400 font-bold text-black h-8 pl-4 flex items-center absolute -top-1 left-0 rounded-t-lg z-10"
+            >
+              Sudah tahu karier impian
+            </div>
+            <button
+              style="padding: 0.5em 0"
+              class="w-11/12 bg-white text-sm rounded-lg absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30"
+            >
+              Pilih Status
+            </button>
+            <div
+              class="hidden-text text-white absolute bottom-11 left-0 w-full h-12 pt-2 px-5 z-20"
+            >
+              <p class="flex items-center">
+                <img
+                  src="./images/icons8-book-50.png"
+                  width="20"
+                  class="mr-2"
+                  alt=""
+                />
+                Learning
+                <span
+                  id="cardArrow2"
+                  class="bg-white h-4 p-1 rounded-full duration-500 ml-auto"
+                  ><img src="./images/arrowDown.png" alt="" width="10"
+                /></span>
+              </p>
+              <small class="duration-500 opacity-0"
+                >Tingkatkan kompetensimu dan raih karier impian tanpa
+                batas</small
+              >
+            </div>
+            <p
+              class="absolute rounded-b-lg bottom-0 left-0 w-full h-28 pt-2 bg-gradient-to-t from-black via-black/90 to-black/0 text-center flex justify-center z-10"
+            ></p>
+            <p
+              class="absolute card-darker rounded-b-lg bottom-0 left-0 w-full h-full opacity-0 pt-2 duration-500 bg-black/30 text-center flex justify-center"
+            ></p>
+          </div>
+          <div
+            style="background-image: url(./images/workingGirl.avif)"
+            class="card rounded-lg relative bg-cover h-56 bg-white p-8 shadow-md transition-transform duration-500"
+          >
+            <div
+              class="w-full bg-sky-600 font-bold text-white h-8 pl-4 flex items-center absolute -top-1 left-0 rounded-t-lg z-10"
+            >
+              Skill siap, ingin cari kerja
+            </div>
+            <button
+              style="padding: 0.5em 0"
+              class="w-11/12 bg-white text-sm rounded-lg absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30"
+            >
+              Pilih Status
+            </button>
+            <div
+              class="hidden-text text-white absolute bottom-11 left-0 w-full h-12 pt-2 px-5 z-20"
+            >
+              <p class="flex items-center">
+                <img
+                  src="./images/icons8-job-24.png"
+                  width="20"
+                  class="mr-2"
+                  alt=""
+                />
+                Job Matching
+                <span
+                  id="cardArrow3"
+                  class="bg-white h-4 p-1 rounded-full duration-500 ml-auto"
+                  ><img src="./images/arrowDown.png" alt="" width="10"
+                /></span>
+              </p>
+              <small class="duration-500 opacity-0"
+                >Tingkatkan peluang kerja dan raih karier impian tanpa
+                batas</small
+              >
+            </div>
+            <p
+              class="absolute rounded-b-lg bottom-0 left-0 w-full h-28 pt-2 bg-gradient-to-t from-black via-black/90 to-black/0 text-center flex justify-center z-10"
+            ></p>
+            <p
+              class="absolute card-darker rounded-b-lg bottom-0 left-0 w-full h-full opacity-0 pt-2 duration-500 bg-black/30 text-center flex justify-center"
+            ></p>
+          </div>
+        </div>
+        <div class="w-1/6 hidden md:block"></div>
+      </div>
+      <div
+        class="flex md:hidden justify-center border-t border-gray-400 mt-5 pt-5"
+      >
+        <button
+          class="flex items-center bg-white justify-center w-full mx-1 hover:bg-gray-100 border shadow font-bold py-2 px-4 rounded-lg"
+        >
+          <img
+            src="/images/right-arrow-svgrepo-com.svg"
+            width="20"
+            class="mr-1"
+            alt=""
+          />
+          Lihat Program Lainnya
+        </button>
+      </div>
+    </div>
+    <!-- End Section 2 -->
+
+    <!-- Company Sliding -->
+    <div class="slideshow py-8">
+      <div class="slide-item">
+        <img
+          class="slideshow-image"
+          src="https://academy.alterra.id/wp-content/uploads/2021/05/ALTA-Logo-Partners-06.png"
+          alt="Gambar 1"
+        />
+      </div>
+      <div class="slide-item">
+        <img
+          class="slideshow-image"
+          src="https://academy.alterra.id/wp-content/uploads/2021/05/ALTA-Logo-Partners-07.png"
+          alt="Gambar 2"
+        />
+      </div>
+      <div class="slide-item">
+        <img
+          class="slideshow-image"
+          src="https://academy.alterra.id/wp-content/uploads/2021/05/ALTA-Logo-Partners-09-3.png"
+          alt="Gambar 3"
+        />
+      </div>
+      <div class="slide-item">
+        <img
+          class="slideshow-image"
+          src="https://academy.alterra.id/wp-content/uploads/2021/05/ALTA-Logo-Partners-10-1.png"
+          alt="Gambar 4"
+        />
+      </div>
+      <div class="slide-item">
+        <img
+          class="slideshow-image"
+          src="https://academy.alterra.id/wp-content/uploads/2022/04/logo-dataOn.png"
+          alt="Gambar 5"
+        />
+      </div>
+      <div class="slide-item">
+        <img
+          class="slideshow-image"
+          src="https://academy.alterra.id/wp-content/uploads/2022/11/T7MNznS0qbSrXsVqv9ny5JsTAEKpTYXIKy7KB4cs.png"
+          alt="Gambar 6"
+        />
+      </div>
+      <div class="slide-item">
+        <img
+          class="slideshow-image"
+          src="https://academy.alterra.id/wp-content/uploads/2021/05/logo-loket-blue.png"
+          alt="Gambar 7"
+        />
+      </div>
+      <div class="slide-item">
+        <img
+          class="slideshow-image"
+          src="https://academy.alterra.id/wp-content/uploads/2021/05/Xendit_LogoTextRHS_final-1024x271.png"
+          alt="Gambar 8"
+        />
+      </div>
+      <div class="slide-item">
+        <img
+          class="slideshow-image"
+          src="https://academy.alterra.id/wp-content/uploads/2021/05/LOGO_-_BINUS_COLOR_-_Sartika_Zumria-1024x299.png"
+          alt="Gambar 9"
+        />
+      </div>
+      <div class="slide-item">
+        <img
+          class="slideshow-image"
+          src="https://academy.alterra.id/wp-content/uploads/2021/05/logo_amartha_horizontal_color-1024x258.png"
+          alt="Gambar 10"
+        />
+      </div>
+      <div class="slide-item">
+        <img
+          class="slideshow-image"
+          src="https://academy.alterra.id/wp-content/uploads/2021/05/halodoc-logo.png"
+          alt="Gambar 11"
+        />
+      </div>
+      <div class="slide-item">
+        <img
+          class="slideshow-image"
+          src="https://academy.alterra.id/wp-content/uploads/2021/05/ALTA-Logo-Partners-02.png"
+          alt="Gambar 12"
+        />
+      </div>
+      <div class="slide-item">
+        <img
+          class="slideshow-image"
+          src="https://academy.alterra.id/wp-content/uploads/2021/05/ALTA-Logo-Partners-03.png"
+          alt="Gambar 13"
+        />
+      </div>
+      <div class="slide-item">
+        <img
+          class="slideshow-image"
+          src="https://academy.alterra.id/wp-content/uploads/2021/05/ALTA-Logo-Partners-04.png"
+          alt="Gambar 14"
+        />
+      </div>
+    </div>
+    <!-- End Company Sliding -->
+
+    <!-- Contribution -->
+    <div
+      class="text-white bg-sky-600 py-28 flex flex-col justify-center items-center"
+    >
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold">
+          Kontribusi Kami dalam Industri Digital di Indonesia
+        </h1>
+      </div>
+      <div class="flex justify-center items-center">
+        <div class="w-1/6 hidden md:block"></div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="p-4 rounded-lg text-center">
+            <h2 class="text-5xl font-bold text-violet-300">25K+</h2>
+            <p>Pendaftar Program</p>
+          </div>
+          <div class="p-4 rounded-lg text-center">
+            <h2 class="text-5xl font-bold text-violet-300">1200+</h2>
+            <p>Alumni Professional</p>
+          </div>
+          <div class="p-4 rounded-lg text-center">
+            <h2 class="text-5xl font-bold text-violet-300">95%</h2>
+            <p>Lulusan Mendapat Pekerjaan dalam waktu 6 Bulan</p>
+          </div>
+          <div class="p-4 rounded-lg text-center">
+            <h2 class="text-5xl font-bold text-violet-300">1.6x UMP</h2>
+            <p>Rata-rata Gaji Pertama</p>
+          </div>
+        </div>
+        <div class="w-1/6 hidden md:block"></div>
+      </div>
+    </div>
+    <!-- End Contribution -->
+
+    <!-- Flegship Program -->
+    <div class="container block md:flex mx-auto py-12 text-center">
+      <div class="w-1/6 hidden md:block"></div>
+      <div>
+        <div class="mb-8">
+          <h1 class="text-xl font-bold text-sky-600">Program Unggulan</h1>
+          <h2 class="text-4xl text-gray-600 font-bold mt-2 mx-0 md:mx-60">
+            Cek program kami yang telah terbukti membantu siswa dalam
+            mendapatkan pekerjaan impian
+          </h2>
+        </div>
+        <div class="hidden md:flex justify-center">
+          <div class="flex space-x-4 min-h-32">
+            <div class="cursor-pointer p-5" onclick="showDescription(0)">
+              <h3 id="tab0" class="font-semibold">Job Guarantee Bootcamp</h3>
+              <p>Data Science</p>
+            </div>
+            <div class="cursor-pointer p-5" onclick="showDescription(1)">
+              <h3 id="tab1" class="font-semibold">Job Guarantee Bootcamp</h3>
+              <p>Digital Marketing</p>
+            </div>
+            <div class="cursor-pointer p-5" onclick="showDescription(2)">
+              <h3 id="tab2" class="font-semibold">Job Guarantee Bootcamp</h3>
+              <p>Fullstack Web Development</p>
+            </div>
+            <div class="cursor-pointer p-5" onclick="showDescription(3)">
+              <h3 id="tab3" class="font-semibold">Job Guarantee Bootcamp</h3>
+              <p>Product Management</p>
+            </div>
+          </div>
+        </div>
+        <!-- nav program unggulan mobile -->
+        <div class="block md:hidden w-full overflow-x-scroll">
+          <div class="flex justify-center pl-48">
+            <div class="flex space-x-4 min-h-32">
+              <div class="cursor-pointer p-5" onclick="showDescription(0,4)">
+                <h3 id="tab0" class="font-semibold">Job Guarantee Bootcamp</h3>
+                <p>Data Science</p>
+              </div>
+              <div class="cursor-pointer p-5" onclick="showDescription(1,5)">
+                <h3 id="tab1" class="font-semibold">Job Guarantee Bootcamp</h3>
+                <p>Digital Marketing</p>
+              </div>
+              <div class="cursor-pointer p-5" onclick="showDescription(2,6)">
+                <h3 id="tab2" class="font-semibold">Job Guarantee Bootcamp</h3>
+                <p>Fullstack Web Development</p>
+              </div>
+              <div class="cursor-pointer p-5" onclick="showDescription(3,7)">
+                <h3 id="tab3" class="font-semibold">Job Guarantee Bootcamp</h3>
+                <p>Product Management</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End nav program unggulan mobile -->
+        <div class="mt-8 block md:grid grid-cols-2 gap-8 mx-4 md:mx-16">
+          <div id="cardContainer" class="col-span-1"></div>
+          <div class="col-span-1 text-left mt-5">
+            <div id="cardButton" class="text-gray-600"></div>
+            <div class="flex">
+              <div
+                id="cardDescription"
+                class="text-gray-600 w-full pr-0 md:pr-5"
+              ></div>
+              <div class="w-1/4 hidden md:block"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-1/6 hidden md:block"></div>
+    </div>
+    <!-- End Flegship Program -->
+
+    <!-- Why EmBootcamp -->
+    <div class="bg-gradient-to-b from-sky-200/30 p-8 flex text-center">
+      <div class="w-1/6 hidden md:block"></div>
+      <div class="w-full md:w-5/6">
+        <!-- Tingkat 1 -->
+        <div>
+          <h1 class="text-xl md:text-4xl font-semibold">
+            Mengapa EmBootcamp Academy?
+          </h1>
+        </div>
+
+        <!-- Tingkat 2 -->
+        <div class="block md:flex justify-center mt-0 md:mt-8">
+          <div
+            class="flex flex-col items-center mx-0 md:mx-4 w-full my-4 md:w-1/2"
+          >
+            <img
+              src="https://academy.alterra.id/wp-content/uploads/2023/06/Frame-6629.png"
+              alt="Gambar"
+              class="w-12 md:w-9 h-12 md:h-9 object-cover rounded-lg"
+            />
+            <h2 class="text-lg font-semibold mt-2">Relevansi Kurikulum</h2>
+            <p class="text-sm text-gray-600 mt-2">
+              Kami merancang dan menyediakan kurikulum berstandar tinggi yang
+              telah disesuaikan dengan tren dan kebutuhan industri teknologi
+              saat ini.
+            </p>
+          </div>
+          <div
+            class="flex flex-col items-center mx-0 md:mx-4 w-full my-4 md:w-1/2"
+          >
+            <img
+              src="https://academy.alterra.id/wp-content/uploads/2023/06/Frame-6630.png"
+              alt="Gambar"
+              class="w-12 md:w-9 h-12 md:h-9 object-cover rounded-lg"
+            />
+            <h2 class="text-lg font-semibold mt-2">Siap Masuk Dunia Kerja</h2>
+            <p class="text-sm text-gray-600 mt-2">
+              Tidak hanya belajar keahlian teknis, kami juga melatih kamu agar
+              siap menghadapi dunia kerja. Mulai dari cara membangun resume &
+              online presence, soft skills, cara menghadapi interview, hingga
+              coding test.
+            </p>
+          </div>
+          <div
+            class="flex flex-col items-center mx-0 md:mx-4 w-full my-4 md:w-1/2"
+          >
+            <img
+              src="https://academy.alterra.id/wp-content/uploads/2023/06/Frame-6622.png"
+              alt="Gambar"
+              class="w-12 md:w-9 h-12 md:h-9 object-cover rounded-lg"
+            />
+            <h2 class="text-lg font-semibold mt-2">
+              Konsultasi & Dukungan Karir
+            </h2>
+            <p class="text-sm text-gray-600 mt-2">
+              Selama proses pelatihan kami memberikan dukungan kepada para
+              peserta dalam bentuk konsultasi atau diskusi terkait karir dan
+              wawasan lainnya.
+            </p>
+          </div>
+          <div
+            class="flex flex-col items-center mx-0 md:mx-4 w-full my-4 md:w-1/2"
+          >
+            <img
+              src="https://academy.alterra.id/wp-content/uploads/2023/06/Frame-6632-1.png"
+              alt="Gambar"
+              class="w-12 md:w-9 h-12 md:h-9 object-cover rounded-lg"
+            />
+            <h2 class="text-lg font-semibold mt-2">Pilihan Program</h2>
+            <p class="text-sm text-gray-600 mt-2">
+              Alterra Academy menyediakan berbagai pilihan program sesuai dengan
+              kebutuhan kamu. Immersive untuk kamu yang ingin berkarir di dunia
+              IT, ONE untuk kamu yang ingin mencicipi dunia IT serta program
+              lainnya seperti Prakerja & Kampus Merdeka.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tingkat 3 -->
+        <div class="flex justify-center mt-8">
+          <div class="block md:flex items-center">
+            <div
+              class="flex flex-col items-center w-full my-5 md:my-0 md:w-1/3"
+            >
+              <h2 class="text-center md:text-left text-lg">
+                Kualitas Program dengan berfokus kepada output lulusan terbaik
+              </h2>
+            </div>
+            <div class="flex items-center w-full md:w-2/3">
+              <div class="flex flex-col items-center w-2/3">
+                <img
+                  src="https://academy.alterra.id/wp-content/uploads/2023/11/6446b6da7022d860a8772102_Course-Report-Logo.png "
+                  alt="Gambar"
+                  class="w-28"
+                />
+                <p class="text-3xl font-semibold mt-2">4.9/5</p>
+                <p class="text-sm text-gray-600">105 Reviews</p>
+              </div>
+              <div class="flex flex-col items-center w-2/3 mt-0 md:-mt-1">
+                <img
+                  src="https://academy.alterra.id/wp-content/uploads/2023/11/60d4509851d12743d030a9eb_5c11336dd43b9272273fb4ce_Google-Reviews-e1701072157794-1024x413.jpeg"
+                  alt="Gambar"
+                  class="w-28"
+                />
+                <p class="text-3xl font-semibold mt-2">4.9/5</p>
+                <p class="text-sm text-gray-600">101 Reviews</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-1/6 hidden md:block"></div>
+    </div>
+    <!-- End Why EmBootcamp -->
+
+    <!-- Map -->
+    <div class="flex justify-center p-4 md:p-12">
+      <div class="w-1/6 hidden md:block"></div>
+      <div class="w-full">
+        <img
+          src="https://academy.alterra.id/wp-content/uploads/2023/06/Map-Square-2-1-1024x416.png"
+          alt=""
+          class="w-full"
+        />
+        <div class="flex text-center">
+          <div class="mx-0 md:mx-5">
+            <h4 class="font-bold text-xl md:text-3xl">1125</h4>
+            <p>Peserta Terdampak covid yang sulit kerja</p>
+          </div>
+          <div class="mx-0 md:mx-5">
+            <h4 class="font-bold text-xl md:text-3xl">900</h4>
+            <p>Peserta Perempuan pelatihan IT support</p>
+          </div>
+          <div class="mx-0 md:mx-5">
+            <h4 class="font-bold text-xl md:text-3xl">360+</h4>
+            <p>Alumni siap kerja</p>
+          </div>
+          <div class="mx-0 md:mx-5">
+            <h4 class="font-bold text-xl md:text-3xl">11</h4>
+            <p>UMKM Terbantu</p>
+          </div>
+        </div>
+      </div>
+      <div class="w-1/6 hidden md:block"></div>
+    </div>
+    <!-- End Map -->
+
+    <!-- Feedback -->
+    <!-- Slider main container -->
+    <div class="flex justify-center py-28">
+      <div class="bg-violet-200 p-0 md:p-10">
+        <div class="text-center mb-10">
+          <h1 class="text-sky-600 text-lg text-center font-bold mb-5">
+            Alumni Kami
+          </h1>
+          <h4 class="text-3xl font-semibold">Cek apa kata mereka</h4>
+        </div>
+        <div class="swiper">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+              <div class="flex justify-center">
+                <div
+                  class="bg-white w-11/12 md:w-4/5 shadow-md block md:flex items-center rounded-lg p-6"
+                >
+                  <div class="w-96 mb-1 md:mb-0">
+                    <div
+                      class="w-20 h-20 rounded-full overflow-hidden border-4 border-sky-600 mb-4"
+                    >
+                      <img
+                        class="w-full"
+                        src="https://rakamin-lms.s3.ap-southeast-1.amazonaws.com/images/ImageAndikaKusuma_az-096fc6f1-f404-45f0-b85d-384f62b3f0c2.jpeg"
+                        alt="User Image"
+                      />
+                    </div>
+                    <p class="text-md md:text-lg font-semibold text-sky-600">
+                      Andika Kusuma
+                    </p>
+                    <p class="text-xs md:text-sm">Digital Marketing Batch 16</p>
+                    <p class="text-xs md:text-sm mb-2">SEO Specialist Intern</p>
+                    <img
+                      class="w-12"
+                      src="https://rakamin-app.s3.ap-southeast-1.amazonaws.com/images/logo_color_krona-ea1efa42-b4fe-4814-9d65-3f0273055880.png"
+                      alt="Company Logo"
+                    />
+                  </div>
+                  <div class="w-full">
+                    <p class="text-gray-700 text-sm md:text-md">
+                      "Sebelum Bootcamp, pengembangan diri yang saya lakukan
+                      hanya sebatas menonton video di youtube dan tidak begitu
+                      paham. Setelah menjalani bootcamp dengan Rakamin, saya
+                      merasa ada perubahan dalam diri yaitu berkembang secara
+                      ilmu dan koneksi. Sampai saat ini saya jadi lebih berfikir
+                      kreatif dalam membuat suatu campaign dan lebih ahli dalam
+                      memasang suatu iklan dan handle social media. Walaupun
+                      Background yang saya miliki adalah Admin, namum saya
+                      berkesempatan untuk mendapatkan offer dari salah satu
+                      perusahaan Digital Marketing Agency ternama di indonesia
+                      berkat optimasi CV dan Cara menjawab pertanyaan HR di sesi
+                      yang diberikan oleh Rakamin."
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="swiper-slide">
+              <div class="flex justify-center">
+                <div
+                  class="bg-white w-11/12 md:w-4/5 shadow-md block md:flex items-center rounded-lg p-6"
+                >
+                  <div class="w-96 mb-1 md:mb-0">
+                    <div
+                      class="w-20 h-20 rounded-full overflow-hidden border-4 border-sky-600 mb-4"
+                    >
+                      <img
+                        class="w-full"
+                        style="height: 6rem"
+                        src="https://rakamin-lms.s3.ap-southeast-1.amazonaws.com/images/images_Nur_Agnes_Eka_Anggraeni-2ca5b909-0bad-4c08-8851-d70284d83fd4.png"
+                        alt="User Image"
+                      />
+                    </div>
+                    <p class="text-md md:text-lg font-semibold text-sky-600">
+                      Nur Agnes Eka Anggraeni
+                    </p>
+                    <p class="text-xs md:text-sm">Digital Marketing Batch 15</p>
+                    <p class="text-xs md:text-sm mb-2">Growth Hack Intern</p>
+                    <img
+                      class="w-12"
+                      src="https://rakamin-app.s3.ap-southeast-1.amazonaws.com/images/logo_color_bdd-7fe8edf8-9d39-4a64-bbb3-9f1473f94125.png"
+                      alt="Company Logo"
+                    />
+                  </div>
+                  <div class="w-full">
+                    <p class="text-gray-700 text-sm md:text-md">
+                      "Sebelumnya, saya adalah seorang freshgraduate dari
+                      jurusan Teknik Mesin. Setelah lulus, saya memutuskan
+                      mengambil bootcamp untuk memperdalam ilmu Digital
+                      Marketing dengan harapan bisa shifting career walaupun
+                      harus belajar dari 0 lagi. Setelah saya menjalani bootcamp
+                      di Rakamin saya merasa ada perubahan dalam diri saya, saya
+                      jadi suka memperhatikan tiap akun dari beberapa brand
+                      mulai dari konten dan juga strategi yang digunakan. Saya
+                      juga bisa mengobrol langsung dengan mentor-mentor keren
+                      dan mendapat banyak koneksi. Saya berkesempatan untuk
+                      mendapatkan offer dari salah satu agency di Indonesia
+                      berkat sistem career buddy Rakamin Background yang saya
+                      miliki adalah teknik mesin, namun mempelajari digital
+                      marketing di Bootcamp Rakamin membuat saya memiliki nilai
+                      jual lebih dimata rekruiter dan tentunya itu sangat
+                      membantu saya dalam menjalani proses interview."
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="swiper-slide">
+              <div class="flex justify-center">
+                <div
+                  class="bg-white w-11/12 md:w-4/5 shadow-md block md:flex items-center rounded-lg p-6"
+                >
+                  <div class="w-96 mb-1 md:mb-0">
+                    <div
+                      class="w-20 h-20 rounded-full overflow-hidden border-4 border-sky-600 mb-4"
+                    >
+                      <img
+                        class="w-full"
+                        src="https://rakamin-lms.s3.ap-southeast-1.amazonaws.com/images/ImageAnnisa_an-5f22cf40-2b31-4381-b5bd-f1952df7da95.jpeg"
+                        alt="User Image"
+                      />
+                    </div>
+                    <p class="text-md md:text-lg font-semibold text-sky-600">
+                      Annisa Nur Indriyanti
+                    </p>
+                    <p class="text-xs md:text-sm">Digital Marketing Batch 13</p>
+                    <p class="text-xs md:text-sm mb-2">SEO Specialist</p>
+                    <img
+                      class="w-12"
+                      src="https://rakamin-app.s3.ap-southeast-1.amazonaws.com/images/LogoDetikan-409a9a78-ddbb-4651-b29f-17f804b8fa2c.png"
+                      alt="Company Logo"
+                    />
+                  </div>
+                  <div class="w-full">
+                    <p class="text-gray-700 text-sm md:text-md">
+                      "Sebelum di Rakamin belajar sendiri lewat YouTube, terus
+                      ngeliatin porto orang untuk belajar ATM. Setelah dari
+                      Rakamin, saya jadi punya lingkungan yang punya satu misi
+                      untuk belajar digital marketing dan jadi lebih visioner
+                      buat wujudin mimpi Setelah belajar dari Rakamin saya bisa
+                      mewujudkan mimpi untuk terjun ke media besar di Indonesia
+                      sesuai posisi yang saya inginkan. Di Rakamin sangat cocok
+                      untuk bagi yang ingin shifting career. Karena materi dan
+                      result belajarnya memang dipersiapkan untuk kerja. Jadi
+                      buat belajar otodidak sangat worth it."
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Slide 4 -->
+            <div class="swiper-slide">
+              <div class="flex justify-center">
+                <div
+                  class="bg-white w-11/12 md:w-4/5 shadow-md block md:flex items-center rounded-lg p-6"
+                >
+                  <div class="w-96 mb-1 md:mb-0">
+                    <div
+                      class="w-20 h-20 rounded-full overflow-hidden border-4 border-sky-600 mb-4"
+                    >
+                      <img
+                        class="w-full"
+                        src="https://rakamin-lms.s3.ap-southeast-1.amazonaws.com/images/image_Fikri_Rafhsanjani_Wahiyat_az-d276ec9a-c09f-43e7-8858-98030da891f8.jpeg"
+                        alt="User Image"
+                      />
+                    </div>
+                    <p class="text-md md:text-lg font-semibold text-sky-600">
+                      Fikri Rafhsanjani Wahiyat
+                    </p>
+                    <p class="text-xs md:text-sm">Data Science Batch 12</p>
+                    <p class="text-xs md:text-sm mb-2">Data Scientist</p>
+                    <!-- <img class="w-12" src="" alt="Company Logo" /> -->
+                  </div>
+                  <div class="w-full">
+                    <p class="text-gray-700 text-sm md:text-md">
+                      "Sebelum belajar di Rakamin, saya belajar data science
+                      secara otodidak melalui berbagai macam online course.
+                      Namun, ternyata sulit karena learning path yang jelas dan
+                      seorang mentor. Setelah saya join bootcamp di Rakamin.
+                      Saya merasa banyak hal yang berkembang dari diri saya,
+                      mulai dari ilmu data science, soft skill, dan koneksi yang
+                      luas. Ketika belajar pun, saya merasa terarah karena
+                      learning pathnya jelas selain itu kita juga dibimbing oleh
+                      mentor yang profesional di bidangnya, Setelah saya lulus
+                      dari rakamin, saya langsung dibantu oleh talent suply
+                      Rakamin untuk memilih pekerjaan yang sesuai dengan
+                      kemampuan saya. Yang spesialnya, ketika masuk proses
+                      rekrutment itu benar-benar didampingi dari proses awal
+                      rekrutment sampai akhir oleh talent supplynya Rakamin.
+                      Jadinya, saya bisa tau hal-hal apa aja yang harus
+                      disiapkan disetiap tahapan rekrutment."
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Slide 5 -->
+            <div class="swiper-slide">
+              <div class="flex justify-center">
+                <div
+                  class="bg-white w-11/12 md:w-4/5 shadow-md block md:flex items-center rounded-lg p-6"
+                >
+                  <div class="w-96 mb-1 md:mb-0">
+                    <div
+                      class="w-20 h-20 rounded-full overflow-hidden border-4 border-sky-600 mb-4"
+                    >
+                      <img
+                        class="w-full"
+                        src="https://rakamin-lms.s3.ap-southeast-1.amazonaws.com/images/ImageRyanRizki_az-36a471f7-a947-4f20-a3b9-796d02ab9188.jpg"
+                        alt="User Image"
+                      />
+                    </div>
+                    <p class="text-md md:text-lg font-semibold text-sky-600">
+                      Ryan Rizky Fathinanto
+                    </p>
+                    <p class="text-xs md:text-sm">Data Science Batch 17</p>
+                    <p class="text-xs md:text-sm mb-2">
+                      Product & Technology Development Program Trainee
+                    </p>
+                    <img
+                      class="w-12"
+                      src="https://rakamin-app.s3.ap-southeast-1.amazonaws.com/images/logo_color_astrapay-a7f38290-4dc2-40a6-8e2b-19c02c36ae13.png"
+                      alt="Company Logo"
+                    />
+                  </div>
+                  <div class="w-full">
+                    <p class="text-gray-700 text-sm md:text-md">
+                      "Selama saya mengikuti bootcamp Data Science di Rakamin
+                      Academy, saya menjadi paham kalau data itu sangat penting
+                      dan di bootcamp saya diajarkan bagaimana mengolah data
+                      yang ada dengan benar supaya menjadi informasi yang
+                      bermanfaat. Ketika lulus dari bootcamp Data Science saya
+                      memiliki nilai lebih tersendiri untuk dilirik oleh
+                      recruiter, karena saya memiliki kesempatan mendapatkan
+                      offer untuk development program dari salah satu perusahaan
+                      di Grup Konglomerasi ternama dan terbesar di Indonesia
+                      berkat bantuan dari Rakamin Academy Job Acceleration
+                      Program. Di program ini, saya bisa mempercantik resume,
+                      melatih interview saya, baik untuk HR/User/C-Level,
+                      merapikan & menambah portofolio."
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Slide 6 -->
+            <div class="swiper-slide">
+              <div class="flex justify-center">
+                <div
+                  class="bg-white w-11/12 md:w-4/5 shadow-md block md:flex items-center rounded-lg p-6"
+                >
+                  <div class="w-96 mb-1 md:mb-0">
+                    <div
+                      class="w-20 h-20 rounded-full overflow-hidden border-4 border-sky-600 mb-4"
+                    >
+                      <img
+                        class="w-full"
+                        src="https://rakamin-lms.s3.ap-southeast-1.amazonaws.com/images/images_Fajar_Nur_Rochman_az-f6dfe7ce-9603-4663-af34-8f4fcd2ad82a.jpg"
+                        alt="User Image"
+                      />
+                    </div>
+                    <p class="text-md md:text-lg font-semibold text-sky-600">
+                      Fajar Nur Rochman
+                    </p>
+                    <p class="text-xs md:text-sm">Data Science Batch 12</p>
+                    <p class="text-xs md:text-sm mb-2">Sales Data Analyst</p>
+                    <img
+                      class="w-12"
+                      src="https://rakamin-app.s3.ap-southeast-1.amazonaws.com/images/logo_color_wahyoo-4729760f-a001-489d-a2e0-a1f4acb86af8.png"
+                      alt="Company Logo"
+                    />
+                  </div>
+                  <div class="w-full">
+                    <p class="text-gray-700 text-sm md:text-md">
+                      "Awalnya sih kaget banget karena non basic di programing
+                      tapi diajak temen untuk ikutan Bootcamp Data Scientist.
+                      Karena saya kira sama aja dengan ngolah data di excel maka
+                      saya dengan sangat pede ikut dan ternyata sangat jauh beda
+                      tapi karena saya orangnya suka tantangan jadi saya ikutin
+                      dan alhasil lumayan lah dapat portofolio dan kerja di
+                      bidang data. sekarang saya melihat apapun harus base on
+                      data karena dari data keputusan itu bisa diambil dan
+                      dengan data insight insight akan muncul dan akan terasa
+                      lebih valid. Meskipun background saya dari Business
+                      Administration. Saya berkesempatan untuk mendapatkan offer
+                      dari salah satu startup yang sedang naik daun di Indonesia
+                      berkat sisttem hiring partner dari Rakamin."
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Tambahkan slide selanjutnya sesuai kebutuhan -->
+          </div>
+          <!-- If we need pagination -->
+          <div class="swiper-pagination"></div>
+
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev text-sky-600"></div>
+          <div class="swiper-button-next text-sky-600"></div>
+
+          <!-- If we need scrollbar -->
+          <div class="swiper-scrollbar"></div>
+        </div>
+      </div>
+    </div>
+    <!-- End Feedback -->
+
+    <!-- Footer -->
+    <div class="flex">
+      <div class="w-1/6 hidden md:block"></div>
+      <div class="w-full md:w-3/4">
+        <div
+          class="flex justify-between border-y border-gray-100 py-5 px-5 md:px-0"
+        >
+          <div class="flex items-center">
+            <h4
+              class="text-lg text-violet-700 mr-5 pe-6 flex border-e-0 md:border-e border-gray-400"
+            >
+              <p class="text-sm font-bold text-violet-900">Em</p>
+              Bootcamp
+            </h4>
+            <p class="text-right text-sm w-32 hidden md:block">
+              Official Internship Partner
+            </p>
+            <img
+              class="w-10 mx-4 hidden md:block"
+              src="https://rakamin-app.s3.ap-southeast-1.amazonaws.com/images/logo_color_kominfo-54b75da6-5367-4c0d-bb79-55ff852083d8.png "
+              alt=""
+            />
+            <p class="w-48 text-sm hidden md:block">
+              Kementerian Komunikasi dan Informatika RI
+            </p>
+          </div>
+          <div class="flex items-center">
+            <div
+              class="duration-200 bg-sky-600/10 rounded-full p-2 mr-3 hover:-mt-3"
+            >
+              <img class="w-5 h-5" src="images/instagram.png" alt="" />
+            </div>
+            <div
+              class="duration-200 bg-sky-600/10 rounded-full p-2 mr-3 hover:-mt-3"
+            >
+              <img class="w-5 h-5" src="images/linkedin.png" alt="" />
+            </div>
+            <div
+              class="duration-200 bg-sky-600/10 rounded-full p-2 mr-3 hover:-mt-3"
+            >
+              <img class="w-5 h-5" src="images/x-twitter.webp" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="flex md:hidden py-5 border-b border-gray-100">
+          <img
+            class="w-11 h-11 mx-4"
+            src="https://rakamin-app.s3.ap-southeast-1.amazonaws.com/images/logo_color_kominfo-54b75da6-5367-4c0d-bb79-55ff852083d8.png "
+            alt=""
+          />
+          <div class="text-left">
+            <p class="text-sm font-semibold">Official Internship Partner</p>
+            <p class="text-sm">Kementerian Komunikasi dan Informatika RI</p>
+          </div>
+        </div>
+        <div class="block md:flex justify-between py-6 px-3 md:px-0 text-sm">
+          <div>
+            <h4 class="mb-2 font-semibold">PT. EmBootcamp Kolektif Madani</h4>
+            <p class="w-48 text-gray-500">
+              Menara Caraka - Jl. Mega Kuningan Barat, Kuningan, Kecamatan
+              Setiabudi, Jakarta Selatan, DKI Jakarta 12950
+            </p>
+          </div>
+          <div class="block md:flex text-gray-600">
+            <div class="py-10 md:py-0 mr-0 md:mr-6">
+              <h4 class="mb-1 font-semibold">Feature to Help You</h4>
+              <div>
+                <a class="inline-block hover:text-sky-700" href="#"
+                  >Explore Course</a
+                >
+              </div>
+              <div>
+                <a class="inline-block hover:text-sky-700" href="#"
+                  >Digital Career Profiler</a
+                >
+              </div>
+              <div>
+                <a class="inline-block hover:text-sky-700" href="#"
+                  >Project-Based Internship</a
+                >
+              </div>
+            </div>
+
+            <div>
+              <h4 class="mb-1 font-semibold">Resources</h4>
+              <div>
+                <a class="inline-block hover:text-sky-700" href="#"
+                  >EmBootcamp Academy Tutor</a
+                >
+              </div>
+              <div>
+                <a class="inline-block hover:text-sky-700" href="#"
+                  >Refund Policies</a
+                >
+              </div>
+              <div>
+                <a class="inline-block hover:text-sky-700" href="#">FAQ</a>
+              </div>
+              <div>
+                <a class="inline-block hover:text-sky-700" href="#"
+                  >Privacy Policy and Terms of Use</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-400 py-4 px-3 md:px-0">
+          © EmBootcamp Academy 2024. All rights reserved
+        </p>
+      </div>
+      <div class="w-1/6 hidden md:block"></div>
+    </div>
+    <!-- End Footer -->
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+    <script src="script.js"></script>
+    <script src="slider.js"></script>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    font-family: "Roboto", sans-serif;
+    height: 110vh;
+}
+/* Navbar */
+
+/* End Navbar */
+
+.bulat-peang {
+    width: 17.1em !important;
+    height: 17.1em !important;
+    border-radius: 50% 10% 50% 10%/10% 50% 50% 10%;
+  }
+
+  .text-container {
+    position: relative;
+    overflow: hidden;
+    height: 2.5em;
+}
+
+.text-animation {
+    position: absolute;
+    top: 0;
+    display: inline-block;
+    animation: moveUp 2s infinite alternate;
+}
+
+.text1, .text2 {
+    display: block;
+}
+.text2 {
+    margin-top: 1em;
+}
+
+/* Feedback */
+.swiper {
+    width: 55em;
+    height: 30em;
+  }
+/* End Feedback */
+
+@keyframes moveUp {
+    0% {
+        transform: translateY(2%);
+    }
+    40% {
+        transform: translateY(2%);
+    }
+    60% {
+        transform: translateY(-60%);
+    }
+    100% {
+        transform: translateY(-60%);
+    }
+}
+
+.em48 {
+    width: 100%;
+}
+
+
+/* Company Sliding */
+.slideshow-image {
+    width: 10em;
+}
+.slide-item {
+    width: 15em !important;
+    height: 6em !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+/* End Company Sliding */
+
+@media only screen and (max-width: 600px) {
+    .em48 {
+        width: 100%;
+    }
+    .text-container {
+        height: 2.1em;
+    }
+    .swiper {
+        width: 22em;
+        height: 44em;
+      }
+    /* .text-container {
+        height: 4.2em;
+    } */
+    @keyframes moveUp {
+        0% {
+            transform: translateY(10%);
+        }
+        40% {
+            transform: translateY(10%);
+        }
+        60% {
+            transform: translateY(-52%);
+        }
+        100% {
+            transform: translateY(-52%);
+        }
+    }
+  }
