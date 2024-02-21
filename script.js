@@ -136,6 +136,33 @@ document.addEventListener("DOMContentLoaded", function () {
     const cardArrowId = "cardArrow" + (index + 1);
     const cardArrow = document.getElementById(cardArrowId);
     const img = cardArrow.querySelector("img");
+    let isOpen = false;
+
+    const toggleHiddenText = () => {
+      const hiddenText = card.querySelector(".hidden-text");
+      const cardDarker = card.querySelector(".card-darker");
+      const small = card.querySelector("small");
+
+      if (!isOpen) {
+        hiddenText.style.transform = "translateY(-4em)";
+        hiddenText.style.transition = "transform 0.5s ease";
+        small.style.opacity = 1;
+        cardDarker.style.opacity = 1;
+        cardArrow.classList.remove("h-4");
+        cardArrow.classList.add("h-10");
+        img.src = "./images/arrowUp.svg";
+        isOpen = true;
+      } else {
+        hiddenText.style.transform = "translateY(0)";
+        hiddenText.style.transition = "transform 0.5s ease";
+        small.style.opacity = 0;
+        cardDarker.style.opacity = 0;
+        cardArrow.classList.remove("h-10");
+        cardArrow.classList.add("h-4");
+        img.src = "./images/arrowDown.png";
+        isOpen = false;
+      }
+    };
 
     card.addEventListener("mouseenter", function () {
       const hiddenText = card.querySelector(".hidden-text");
@@ -148,6 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
       cardArrow.classList.remove("h-4");
       cardArrow.classList.add("h-10");
       img.src = "./images/arrowUp.svg";
+      isOpen = true;
     });
 
     card.addEventListener("mouseleave", function () {
@@ -161,10 +189,11 @@ document.addEventListener("DOMContentLoaded", function () {
       cardArrow.classList.remove("h-10");
       cardArrow.classList.add("h-4");
       img.src = "./images/arrowDown.png";
+      isOpen = false;
     });
+    card.addEventListener("click", toggleHiddenText);
   });
 });
-
 // End Section 2
 
 // Company Sliding
