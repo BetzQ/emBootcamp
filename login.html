@@ -51,7 +51,6 @@
 
                 if (response.ok) {
                     const data = await response.json();
-                    alert('Login successful');
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('username', username);
                     // Redirect or perform other actions
