@@ -794,6 +794,7 @@
             Cek program kami yang telah terbukti membantu siswa dalam
             mendapatkan pekerjaan impian
           </h2>
+          <button onclick="makePayment()">Pay Now</button>
         </div>
         <div class="hidden md:flex justify-center">
           <div class="flex space-x-4 min-h-32">
@@ -1437,5 +1438,32 @@
 
     <script src="script.js"></script>
     <script src="slider.js"></script>
+    <script>
+      async function makePayment() {
+        const orderId = 'order-id-example';
+        const grossAmount = 100000; // amount in IDR
+        const customerDetails = {
+          first_name: 'John',
+          last_name: 'Doe',
+          email: 'john.doe@example.com',
+          phone: '08123456789'
+        };
+    
+        const response = await fetch('https://your-deployed-app.vercel.app/payment/charge', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ orderId, grossAmount, customerDetails })
+        });
+    
+        const data = await response.json();
+    
+        if (data.token) {
+          window.location.href = data.redirect_url;
+        } else {
+          alert('Payment failed');
+        }
+      }
+    </script>
+    
   </body>
 </html>
