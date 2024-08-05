@@ -88,6 +88,8 @@ body {
     /* .text-container {
         height: 4.2em;
     } */
+    .welcome-message { color: #6a0dad; font-weight: bold; } /* Purple color for welcome message */
+    .username { color: #000; font-weight: normal; }
     @keyframes moveUp {
         0% {
             transform: translateY(10%);

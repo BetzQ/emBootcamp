@@ -525,3 +525,28 @@ const swiper = new Swiper(".swiper", {
   },
 });
 // End Feedback
+
+function updateNav() {
+  const token = localStorage.getItem('token');
+  const username = localStorage.getItem('username');
+
+  if (token && username) {
+      // Hide login and register links
+      document.getElementById('login-link').style.display = 'none';
+      document.getElementById('register-link').style.display = 'none';
+
+      // Show welcome message
+      const welcomeMessage = `Welcome, <span class="text-black font-normal">${username}</span>`;
+                document.getElementById('welcome-message').innerHTML = welcomeMessage;
+  } else {
+      // Show login and register links
+      document.getElementById('login-link').style.display = 'inline';
+      document.getElementById('register-link').style.display = 'inline';
+
+      // Hide welcome message
+      document.getElementById('welcome-message').innerText = '';
+  }
+}
+
+// Call updateNav when the page loads
+updateNav();
