@@ -3,25 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link
-    rel="shortcut icon"
-    href="./images/firecamp.webp"
-    type="image/x-icon"
-  />
-  <title>Em Bootcamp</title>
+    <link rel="shortcut icon" href="./images/firecamp.webp" type="image/x-icon">
+    <title>Em Bootcamp</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .container { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 400px; }
-        h2 { text-align: center; margin-bottom: 20px; }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; }
-        .form-group input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
-        .form-group button { width: 100%; padding: 10px; border: none; border-radius: 4px; background-color: #007bff; color: #fff; cursor: pointer; font-size: 16px; }
-        .form-group button:hover { background-color: #0056b3; }
-        .link { text-align: center; margin-top: 15px; }
-        .link a { color: #007bff; text-decoration: none; }
-        .link a:hover { text-decoration: underline; }
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #f0f2f5; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+        }
+        .container { 
+            background: #fff; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+            width: 400px; 
+        }
+        h2 { 
+            text-align: center; 
+            margin-bottom: 20px; 
+        }
+        .form-group { 
+            margin-bottom: 15px; 
+        }
+        .form-group label { 
+            display: block; 
+            margin-bottom: 5px; 
+        }
+        .form-group input { 
+            width: 100%; 
+            padding: 10px; 
+            border: 1px solid #ddd; 
+            border-radius: 4px; 
+            box-sizing: border-box; 
+        }
+        .form-group button { 
+            width: 100%; 
+            padding: 10px; 
+            border: none; 
+            border-radius: 4px; 
+            background-color: #007bff; 
+            color: #fff; 
+            cursor: pointer; 
+            font-size: 16px; 
+        }
+        .form-group button:hover { 
+            background-color: #0056b3; 
+        }
+        .link { 
+            text-align: center; 
+            margin-top: 15px; 
+        }
+        .link a { 
+            color: #007bff; 
+            text-decoration: none; 
+        }
+        .link a:hover { 
+            text-decoration: underline; 
+        }
+        .button-loader {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #007bff; /* Blue */
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -36,7 +93,10 @@
             <input type="password" id="password" required>
         </div>
         <div class="form-group">
-            <button onclick="login()">Login</button>
+            <button id="loginButton" onclick="login()">
+                <span id="buttonText">Login</span>
+                <span id="buttonLoader" class="button-loader" style="display: none;"></span>
+            </button>
         </div>
         <div class="link">
             <p>Don't have an account? <a href="register.html">Register here</a></p>
@@ -45,32 +105,40 @@
 
     <script>
         async function login() {
-             const username = document.getElementById('username').value;
-             const password = document.getElementById('password').value;
- 
-             try {
-                 const response = await fetch('https://em-bootcamp-api.vercel.app/login', {
-                     method: 'POST',
-                     headers: { 'Content-Type': 'application/json' },
-                     body: JSON.stringify({ username, password })
-                 });
- 
-                 const data = await response.json();
- 
-                 if (response.ok) {
-                     localStorage.setItem('username', username);
-                    //  alert(data.message);
-                     // Redirect to verify OTP page
-                     window.location.href = 'verify-login-otp.html';
-                 } else {
-                     alert('Error: ' + data.message);
-                 }
-             } catch (error) {
-                 console.error('Error:', error);
-                 alert('Error logging in');
-             }
-         }
- 
-     </script>
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const loginButton = document.getElementById('loginButton');
+            const buttonText = document.getElementById('buttonText');
+            const buttonLoader = document.getElementById('buttonLoader');
+            
+            buttonText.style.display = 'none'; // Sembunyikan teks tombol
+            buttonLoader.style.display = 'inline-block'; // Tampilkan loader
+
+            try {
+                const response = await fetch('https://em-bootcamp-api.vercel.app/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    localStorage.setItem('username', username);
+                    // alert(data.message);
+                    // Redirect to verify OTP page
+                    window.location.href = 'verify-login-otp.html';
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error logging in');
+            } finally {
+                buttonText.style.display = 'inline'; // Tampilkan kembali teks tombol
+                buttonLoader.style.display = 'none'; // Sembunyikan loader
+            }
+        }
+    </script>
 </body>
 </html>
