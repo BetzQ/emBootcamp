@@ -53,30 +53,32 @@
 
     <script>
         async function register() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const email = document.getElementById('email').value;
-            const fullName = document.getElementById('fullName').value;
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const email = document.getElementById('email').value;
+    const fullName = document.getElementById('fullName').value;
 
-            try {
-                const response = await fetch('https://em-bootcamp-api.vercel.app/register', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password, email, fullName })
-                });
+    try {
+        const response = await fetch('https://em-bootcamp-api.vercel.app/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password, email, fullName })
+        });
 
-                if (response.ok) {
-                    // alert('User registered successfully');
-                    window.location.href = 'login.html';
-                } else {
-                    const errorText = await response.text();
-                    alert('Error: ' + errorText);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error registering user');
-            }
+        if (response.ok) {
+            localStorage.setItem('username', username);
+            // Redirect to verify OTP page
+            window.location.href = 'verify-otp.html';
+        } else {
+            const errorText = await response.text();
+            alert('Error: ' + errorText);
         }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error registering user');
+    }
+}
+
     </script>
 </body>
 </html>

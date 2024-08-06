@@ -45,31 +45,32 @@
 
     <script>
         async function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            try {
-                const response = await fetch('https://em-bootcamp-api.vercel.app/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password })
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    localStorage.setItem('token', data.token);
-                    localStorage.setItem('username', username);
-                    // Redirect or perform other actions
-                    window.location.href = 'index.html';
-                } else {
-                    const errorText = await response.text();
-                    alert('Error: ' + errorText);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error logging in');
-            }
-        }
-    </script>
+             const username = document.getElementById('username').value;
+             const password = document.getElementById('password').value;
+ 
+             try {
+                 const response = await fetch('https://em-bootcamp-api.vercel.app/login', {
+                     method: 'POST',
+                     headers: { 'Content-Type': 'application/json' },
+                     body: JSON.stringify({ username, password })
+                 });
+ 
+                 const data = await response.json();
+ 
+                 if (response.ok) {
+                     localStorage.setItem('username', username);
+                    //  alert(data.message);
+                     // Redirect to verify OTP page
+                     window.location.href = 'verify-login-otp.html';
+                 } else {
+                     alert('Error: ' + data.message);
+                 }
+             } catch (error) {
+                 console.error('Error:', error);
+                 alert('Error logging in');
+             }
+         }
+ 
+     </script>
 </body>
 </html>

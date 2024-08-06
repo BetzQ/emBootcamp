@@ -526,25 +526,50 @@ const swiper = new Swiper(".swiper", {
 });
 // End Feedback
 
+document.getElementById('logoutButton').addEventListener('click', () => {
+  localStorage.removeItem('token');
+  localStorage.removeItem('user');
+  localStorage.removeItem('username');
+  // alert('Logged out successfully. Redirecting to login...');
+  window.location.href = '/login.html';
+});
+
 function updateNav() {
   const token = localStorage.getItem('token');
   const username = localStorage.getItem('username');
 
   if (token && username) {
-      // Hide login and register links
-      document.getElementById('login-link').style.display = 'none';
-      document.getElementById('register-link').style.display = 'none';
+      // Hide login and register links (if applicable)
+      const loginLink = document.getElementById('login-link');
+      const registerLink = document.getElementById('register-link');
+      const signed = document.getElementById('signed');
+      if (loginLink) loginLink.style.display = 'none';
+      if (registerLink) registerLink.style.display = 'none';
+      if (signed) signed.style.display = 'flex';
 
-      // Show welcome message
-      const welcomeMessage = `Welcome, <span class="text-black font-normal">${username}</span>`;
-                document.getElementById('welcome-message').innerHTML = welcomeMessage;
+      // Show welcome message (if applicable)
+      const welcomeMessage = document.getElementById('welcome-message');
+      if (welcomeMessage) {
+          welcomeMessage.innerHTML = `Welcome, <span class="text-black font-normal">${username}</span>`;
+      }
+
+      // Show logout button
+      document.getElementById('logoutButton').classList.remove('hidden');
   } else {
-      // Show login and register links
-      document.getElementById('login-link').style.display = 'inline';
-      document.getElementById('register-link').style.display = 'inline';
+      // Show login and register links (if applicable)
+      const loginLink = document.getElementById('login-link');
+      const registerLink = document.getElementById('register-link');
+      const signed = document.getElementById('signed');
+      if (loginLink) loginLink.style.display = 'inline';
+      if (registerLink) registerLink.style.display = 'inline';
+      if (signed) signed.style.display = 'none';
 
-      // Hide welcome message
-      document.getElementById('welcome-message').innerText = '';
+      // Hide welcome message (if applicable)
+      const welcomeMessage = document.getElementById('welcome-message');
+      if (welcomeMessage) welcomeMessage.innerText = '';
+
+      // Hide logout button
+      document.getElementById('logoutButton').classList.add('hidden');
   }
 }
 
